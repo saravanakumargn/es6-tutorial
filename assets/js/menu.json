@@ -1,11 +1,11 @@
 {
   "menu": [
     {
-      "url": "arrow-function",
+      "url": "https://saravanakumargn.github.io/es6-tutorial/arrow-function/",
       "label": "Arrow functions"
     },
     {
-      "url": "rest-parameter",
+      "url": "https://saravanakumargn.github.io/es6-tutorial/rest-parameter/",
       "label": "Rest parameter"
     }
   ]

@@ -16,7 +16,7 @@
       var linksMenu = '', links = '<ul class="toc">';
       var menuLen = menu.length;
       for (var i = 0; i < menuLen; i++) {
-        linksMenu += '<a class="mdl-navigation__link" href="../' + menu[i].url + '">' + menu[i].label + '</a>';
+        linksMenu += '<a class="mdl-navigation__link" href="' + menu[i].url + '">' + menu[i].label + '</a>';
         links += '<a href="' + menu[i].url + '">' + menu[i].label + '</a>';
       }
       links += '</ul>';
