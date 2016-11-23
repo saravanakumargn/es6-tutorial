@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="ES6 Tutorial">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<title>ES6 Tutorial</title>
+	<link rel="shortcut icon" href="images/favicon.png">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+	<link rel="stylesheet" href="../assets/css/style.css">
+	<link rel="stylesheet" href="../assets/css/default.min.css">
+</head>
+
+<body>
+	<div class="es6-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header">
+				<div class="mdl-layout__header-row">
+					<span class="mdl-layout-title">ES6 Tutorial</span>
+					<div class="mdl-layout-spacer"></div>
+					<nav class="mdl-navigation mdl-layout--large-screen-only">
+						<a class="mdl-navigation__link" href="https://github.com/saravanakumargn/es6-tutorial">Github</a>
+					</nav>
+				</div>
+			</header>
+			<div class="mdl-layout__drawer">
+				<span class="mdl-layout-title">ES6 Tutorial</span>
+				<nav class="mdl-navigation" id="pageMenu">
+					<a class="mdl-navigation__link" href="">Link</a>
+				</nav>
+			</div>
+			<main class="mdl-layout__content">
+				<div class="page-content">
+					<div class="es6-ribbon"></div>
+					<main class="es6-main mdl-layout__content">
+						<div class="es6-container mdl-grid">
+							<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+							<div class="es6-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+								<div class="es6-crumbs mdl-color-text--grey-500">
+									<a href="https://saravanakumargn.github.io/es6-tutorial/">ES6 Tutorial</a> &gt; Arrow functions</div>
+								<h2>Arrow functions</h2>
+<p>There are two benefits to arrow functions.</p>
+<ol>
+  <li>Shorter syntax <code>=></code> compared to function expressions.</li>
+  <li><code>this</code> is picked from the lexical scope (also called static scope).</li>
+</ol>
+
+<p>Arrow functions are always anonymous. The examples are below:</p>
+<p>Function without any parameters</p>
+<pre>
+	<code class="javascript">var intro = () => "Welcome";
+</code></pre>
+<p>The above code is equivalent of the below:</p>
+<pre><code class="javascript">var intro = function intro() {
+  return "Welcome";
+};
+</code></pre>
+<p>Using Arrow function with <code>map</code></p>
+<pre><code class="javascript">const arr = [1, 2, 3];
+const squares = arr.map(x => x * x);
+</code></pre>
+<p>The above code is equivalent of the below:</p>
+<pre><code class="javascript">var arr = [1, 2, 3];
+var squares = arr.map(function (x) {
+  return x * x;
+});
+</code></pre>
+
+<p>Function with 1 parameter</p>
+<pre><code class="javascript">var multiplyBy2 = value1 => value1 * 2;
+console.log(multiplyBy2(4));  // prints 8
+</code></pre>
+<p>The above code is equivalent of the below:</p>
+<pre><code class="javascript">var multiplyBy2 = function multiplyBy2(value1) {
+  return value1 * 2;
+};
+console.log(multiplyBy2(4)); // prints 8
+</code></pre>
+
+<p>Function with more than 2 parameters</p>
+<pre><code class="javascript">var add = (value1, value2) => value1 + value2;
+console.log(add(10, 20));   // prints 30
+</code></pre>
+<p>The above code is equivalent of the below:</p>
+<pre><code class="javascript">var add = function add(value1, value2) {
+  return value1 + value2;
+};
+console.log(add(10, 20)); // prints 30
+</code></pre>
+
+<h4>this reference</h4>
+<p>The source of this is an important distinguishing aspect of arrow functions:</p>
+<ul>
+  <li>Traditional functions have a <code>dynamic this</code>; its value is determined by how they are called.</li>
+  <li>Arrow functions have a <code>lexical this</code>; its value is determined by the surrounding scope.</li>
+</ul>
+<p>The following variables are all lexical inside arrow functions:</p>
+<ul>
+  <li><code>arguments</code></li>
+  <li><code>super</code></li>
+  <li><code>this</code></li>
+  <li><code>new.target</code></li>
+</ul>
+
+<p>An arrow function does not create its own this context, so this has the original meaning from the enclosing context.</p>
+<p>Working with <code>this</code> until traditional way</p>
+<pre><code class="javascript">function Person() {
+    var _this = this;
+    this.count = 0;
+    setInterval(function () {
+        console.log(_this.count++); // |this| properly refers to the person object
+    }, 1000);
+}
+</code></pre>
+<p>The above code is equivalent of the below:</p>
+<pre><code class="javascript">function Person(){
+  this.count = 0;
+
+  setInterval(() => {
+    console.log(this.count++); // |this| properly refers to the person object
+  }, 1000);
+}
+</code></pre>
+
+<h4>Returning object literals</h4>
+<p>The object literal returned by this arrow function is like below:</p>
+<pre><code class="javascript">const f = x => ({ bar: 123 })
+</code></pre>
+<p>The above code is equivalent of the below:</p>
+<pre><code class="javascript">var f = function f(x) {
+  return { bar: 123 };
+};
+</code></pre>
+							</div>
+						</div>
+						<footer class="es6-footer mdl-mini-footer">
+							<div class="mdl-mini-footer--left-section">
+								<ul class="mdl-mini-footer--link-list">
+									<li><a href="http://saravanakumar.org/">saravanakumar.org</a></li>
+								</ul>
+							</div>
+						</footer>
+					</main>
+				</div>
+			</main>
+		</div>
+	</div>
+	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+	<script defer src="../assets/js/script.js"></script>
+	<script src="../assets/js/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-87935251-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

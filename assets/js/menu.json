@@ -1,0 +1,12 @@
+{
+  "menu": [
+    {
+      "url": "arrow-function",
+      "label": "Arrow functions"
+    },
+    {
+      "url": "rest-parameter",
+      "label": "Rest parameter"
+    }
+  ]
+}
