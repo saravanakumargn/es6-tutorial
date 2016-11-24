@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="ES6 Tutorial">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-	<title>Arrow functions - ECMAScript 2015 (ES6) Tutorial</title>
+	<title>Rest parameters - ECMAScript 2015 (ES6) Tutorial</title>
 	<link rel="shortcut icon" href="images/favicon.png">
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
@@ -42,104 +42,60 @@
 							<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
 							<div class="es6-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
 								<div class="es6-crumbs mdl-color-text--grey-500">
-									<a href="https://saravanakumargn.github.io/es6-tutorial/">ES6 Tutorial</a> &gt; Arrow functions</div>
+									<a href="https://saravanakumargn.github.io/es6-tutorial/">ES6 Tutorial</a> &gt; Rest parameters</div>
 									<div class="badge-container">
 									<a href='https://play.google.com/store/apps/details?id=org.saravanakumar.es6&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'
 											width="240px" height="95px" /></a>
 								</div>
-								<h2>Arrow functions</h2>
-<p>There are two benefits to arrow functions.</p>
-<ol>
-  <li>Shorter syntax <code>=></code> compared to function expressions.</li>
-  <li><code>this</code> is picked from the lexical scope (also called static scope).</li>
-</ol>
-
-<p>Arrow functions are always anonymous. The examples are below:</p>
-<p>Function without any parameters</p>
-<pre>
-	<code class="javascript">var intro = () => "Welcome";
-</code></pre>
-<p>The above code is equivalent of the below:</p>
-<pre><code class="javascript">var intro = function intro() {
-  return "Welcome";
-};
-</code></pre>
-<p>Using Arrow function with <code>map</code></p>
-<pre><code class="javascript">const arr = [1, 2, 3];
-const squares = arr.map(x => x * x);
-</code></pre>
-<p>The above code is equivalent of the below:</p>
-<pre><code class="javascript">var arr = [1, 2, 3];
-var squares = arr.map(function (x) {
-  return x * x;
-});
-</code></pre>
-
-<p>Function with 1 parameter</p>
-<pre><code class="javascript">var multiplyBy2 = value1 => value1 * 2;
-console.log(multiplyBy2(4));  // prints 8
-</code></pre>
-<p>The above code is equivalent of the below:</p>
-<pre><code class="javascript">var multiplyBy2 = function multiplyBy2(value1) {
-  return value1 * 2;
-};
-console.log(multiplyBy2(4)); // prints 8
-</code></pre>
-
-<p>Function with more than 2 parameters</p>
-<pre><code class="javascript">var add = (value1, value2) => value1 + value2;
-console.log(add(10, 20));   // prints 30
-</code></pre>
-<p>The above code is equivalent of the below:</p>
-<pre><code class="javascript">var add = function add(value1, value2) {
-  return value1 + value2;
-};
-console.log(add(10, 20)); // prints 30
-</code></pre>
-
-<h4>this reference</h4>
-<p>The source of this is an important distinguishing aspect of arrow functions:</p>
-<ul>
-  <li>Traditional functions have a <code>dynamic this</code>; its value is determined by how they are called.</li>
-  <li>Arrow functions have a <code>lexical this</code>; its value is determined by the surrounding scope.</li>
-</ul>
-<p>The following variables are all lexical inside arrow functions:</p>
-<ul>
-  <li><code>arguments</code></li>
-  <li><code>super</code></li>
-  <li><code>this</code></li>
-  <li><code>new.target</code></li>
-</ul>
-
-<p>An arrow function does not create its own this context, so this has the original meaning from the enclosing context.</p>
-<p>Working with <code>this</code> until traditional way</p>
-<pre><code class="javascript">function Person() {
-    var _this = this;
-    this.count = 0;
-    setInterval(function () {
-        console.log(_this.count++); // |this| properly refers to the person object
-    }, 1000);
+								
+								
+								<h3>Rest parameters</h3>
+<p>Putting the rest operator <code>...</code> in front of the last formal parameter means that it will receive all remaining actual parameters in an Array.</p>
+<p>In the below example, marks would collect the second argument of the function (because the first one is mapped to a) and all the consecutive arguments.</p>
+<pre><code class="javascript">function student(name, ...marks) {
+    console.log(name); // myname
+    console.log(marks); // [10, 20, 30, 40, 50]
 }
+student('myname', 10,20,30,40,50);
 </code></pre>
-<p>The above code is equivalent of the below:</p>
-<pre><code class="javascript">function Person(){
-  this.count = 0;
 
-  setInterval(() => {
-    console.log(this.count++); // |this| properly refers to the person object
-  }, 1000);
+<h4>Difference between rest parameters and the arguments object</h4>
+<p>There are three main differences between rest parameters and the arguments object:</p>
+<ul>
+    <li>rest parameters are only the ones that haven't been given a separate name, while the arguments object contains all arguments passed to the function;</li>
+    <li>the arguments object is not a real array, while rest parameters are Array instances, meaning methods like sort, map, forEach or pop can be applied on it directly;</li>
+    <li>the arguments object has additional functionality specific to itself.</li>
+</ul>
+<p>Working with arguments old way</p>
+<pre><code class="javascript">function student(name, marks) {
+    console.log(name); // myname
+    console.log(arguments); // ["myname", 7, 4, 8, 2, 9]
+    console.log(marks); // 7
+    console.log(arguments.sort()); // Uncaught TypeError: arguments.sort is not a function(…)
 }
+student('myname', 7,4,8,2,9);    
+</code></pre>
+<p>The above code is equivalent to the below ES5 standard code</p>
+<pre><code class="javascript">function student(name, ...marks) {
+    console.log(name); // myname
+    console.log(marks); // [7, 4, 8, 2, 9]
+    console.log(marks.sort()); // [2, 4, 7, 8, 9]
+}
+student('myname', 7,4,8,2,9); 
+</code></pre>
+<h4>Other usage example</h4>
+<pre><code class="javascript">function student(name, ...marks) {
+    console.log(name); // myname
+    console.log(marks); // [10, 20, 30]
+    var total = marks.reduce(function(a,b) {
+        return a+b;
+    })
+    console.log(total); // 150
+}
+student('myname', 10,20,30,40,50);
 </code></pre>
 
-<h4>Returning object literals</h4>
-<p>The object literal returned by this arrow function is like below:</p>
-<pre><code class="javascript">const f = x => ({ bar: 123 })
-</code></pre>
-<p>The above code is equivalent of the below:</p>
-<pre><code class="javascript">var f = function f(x) {
-  return { bar: 123 };
-};
-</code></pre>
+
 							</div>
 						</div>
 						<footer class="es6-footer mdl-mini-footer">

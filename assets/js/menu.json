@@ -1,6 +1,10 @@
 {
   "menu": [
     {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/template-strings/",
+      "label": "Template Strings"
+    },
+    {
       "url": "https://saravanakumargn.github.io/es6-tutorial/arrow-function/",
       "label": "Arrow functions"
     },
