@@ -6,13 +6,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="ES6 Tutorial">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-	<title>ECMAScript 2015 (ES6) Tutorial</title>
+	<title>Collections - WeakSet - ECMAScript 2015 (ES6) Tutorial</title>
 	<link rel="shortcut icon" href="images/favicon.png">
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
-	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="../assets/css/style.css">
+	<link rel="stylesheet" href="../assets/css/hightlight.css">
 </head>
 
 <body>
@@ -40,30 +41,40 @@
 						<div class="es6-container mdl-grid">
 							<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
 							<div class="es6-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-								<div class="badge-container">
-									<a href='https://play.google.com/store/apps/details?id=org.saravanakumar.es6&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="240px" height="95px" /></a>
+								<div class="es6-crumbs mdl-color-text--grey-500">
+									<a href="https://saravanakumargn.github.io/es6-tutorial/">ES6 Tutorial</a> &gt; Collections - WeakSet</div>
+									<div class="badge-container">
+									<a href='https://play.google.com/store/apps/details?id=org.saravanakumar.es6&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+									<img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="240px" height="95px" />
+									</a>
 								</div>
-								<p>This Tutorial for Javascript-ES6 Quick reference with simple examples.</p>
-								<h3>Topics</h3>
-								<ul class="toc">
-									<a href="https://saravanakumargn.github.io/es6-tutorial/es6-introduction/">Introduction</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/template-strings/">Template Strings</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/let-constants/">Let &amp; Constants</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/for-of/">for...of</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/arrow-function/">Arrow functions</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/rest-parameter/">Rest parameter</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/default-parameters/">Default parameters</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/spread-operator/">Spread operator</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/es6-destructuring/">Destructuring</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/collections-map/">Collections - Map</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/collections-weakmap/">Collections - WeakMap</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/collections-set/">Collections - Set</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/collections-weakset/">Collections - WeakSet</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/classes/">Classes</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/modules/">Modules</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/modules-export-import/">Modules - export &amp; import</a>
+								
+<h2>Collections - WeakSet</h2>
+<p>The following four data structures are new in ECMAScript 6: <code>Map</code>, <code>WeakMap</code>, <code>Set</code> and <code>WeakSet</code>.</p>
+<p>The WeakSet object lets you store <a title="References to objects in the collection are held weakly. If there is no other reference to an object stored in the WeakSet, they can be garbage collected. This means the garbage collector can remove any object in the set when it's no longer used without the programmer needing to explicitly remove it from the set." ng-click="showAlert($event)">weakly held objects</a> in a collection.</p>
+<p>WeakSets have only three methods, all of them work the same as the Set methods.</p>
+<ul>
+<li><code>WeakSet.prototype.add(value)</code></li>
+<li><code>WeakSet.prototype.has(value)</code></li>
+<li><code>WeakSet.prototype.delete(value)</code></li>
+</ul>
+<p><code>WeakSet</code> collection can‘t be iterated and we cannot determine its size.</p>
+<h4>Examples</h4>
+<pre><code class="javascript">var ws = new WeakSet();
+var obj = {};
+var foo = {};
 
-								</ul>
+ws.add(window);
+ws.add(obj);
+
+ws.has(window); // true
+ws.has(foo);    // false, foo has not been added to the set
+
+ws.delete(window); // removes window from the set
+ws.has(window);    // false, window has been removed
+</code></pre>
+				
+								
 							</div>
 						</div>
 						<footer class="es6-footer mdl-mini-footer">
@@ -77,8 +88,10 @@
 		</div>
 	</div>
 	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-	<script defer src="assets/js/script.js"></script>
-	<script>
+	<script defer src="../assets/js/script.js"></script>
+	<script src="../assets/js/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

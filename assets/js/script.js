@@ -2,7 +2,7 @@
   function loadJSON(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'https://saravanakumargn.github.io/es6-tutorial/assets/js/menu.json', true);
+    xobj.open('GET', 'http://localhost:3000/assets/js/menu.json', true);
     xobj.onreadystatechange = function () {
       if (xobj.readyState == 4 && xobj.status == "200") {
         callback(xobj.responseText);

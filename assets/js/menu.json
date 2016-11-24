@@ -1,8 +1,20 @@
 {
   "menu": [
     {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/es6-introduction/",
+      "label": "Introduction"
+    },
+    {
       "url": "https://saravanakumargn.github.io/es6-tutorial/template-strings/",
       "label": "Template Strings"
+    },
+    {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/let-constants/",
+      "label": "Let & Constants"
+    },
+    {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/for-of/",
+      "label": "for...of"
     },
     {
       "url": "https://saravanakumargn.github.io/es6-tutorial/arrow-function/",
@@ -11,6 +23,46 @@
     {
       "url": "https://saravanakumargn.github.io/es6-tutorial/rest-parameter/",
       "label": "Rest parameter"
+    },
+    {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/default-parameters/",
+      "label": "Default parameters"
+    },
+    {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/spread-operator/",
+      "label": "Spread operator"
+    },
+    {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/es6-destructuring/",
+      "label": "Destructuring"
+    },
+    {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/collections-map/",
+      "label": "Collections - Map"
+    },
+    {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/collections-weakmap/",
+      "label": "Collections - WeakMap"
+    },
+    {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/collections-set/",
+      "label": "Collections - Set"
+    },
+    {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/collections-weakset/",
+      "label": "Collections - WeakSet"
+    },
+    {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/classes/",
+      "label": "Classes"
+    },
+    {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/modules/",
+      "label": "Modules"
+    },
+    {
+      "url": "https://saravanakumargn.github.io/es6-tutorial/modules-export-import/",
+      "label": "Modules - export & import"
     }
   ]
 }

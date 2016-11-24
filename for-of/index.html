@@ -6,13 +6,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="ES6 Tutorial">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-	<title>ECMAScript 2015 (ES6) Tutorial</title>
+	<title>for...of - ECMAScript 2015 (ES6) Tutorial</title>
 	<link rel="shortcut icon" href="images/favicon.png">
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
-	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="../assets/css/style.css">
+	<link rel="stylesheet" href="../assets/css/hightlight.css">
 </head>
 
 <body>
@@ -40,30 +41,64 @@
 						<div class="es6-container mdl-grid">
 							<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
 							<div class="es6-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-								<div class="badge-container">
-									<a href='https://play.google.com/store/apps/details?id=org.saravanakumar.es6&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="240px" height="95px" /></a>
+								<div class="es6-crumbs mdl-color-text--grey-500">
+									<a href="https://saravanakumargn.github.io/es6-tutorial/">ES6 Tutorial</a> &gt; for...of</div>
+									<div class="badge-container">
+									<a href='https://play.google.com/store/apps/details?id=org.saravanakumar.es6&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'
+											width="240px" height="95px" /></a>
 								</div>
-								<p>This Tutorial for Javascript-ES6 Quick reference with simple examples.</p>
-								<h3>Topics</h3>
-								<ul class="toc">
-									<a href="https://saravanakumargn.github.io/es6-tutorial/es6-introduction/">Introduction</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/template-strings/">Template Strings</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/let-constants/">Let &amp; Constants</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/for-of/">for...of</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/arrow-function/">Arrow functions</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/rest-parameter/">Rest parameter</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/default-parameters/">Default parameters</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/spread-operator/">Spread operator</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/es6-destructuring/">Destructuring</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/collections-map/">Collections - Map</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/collections-weakmap/">Collections - WeakMap</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/collections-set/">Collections - Set</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/collections-weakset/">Collections - WeakSet</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/classes/">Classes</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/modules/">Modules</a>
-<a href="https://saravanakumargn.github.io/es6-tutorial/modules-export-import/">Modules - export &amp; import</a>
-
-								</ul>
+								
+<h2>for...of</h2>
+<p><code>for-of</code> is a new loop in ES6 that replaces both <code>for-in</code> and <code>forEach()</code> and supports the new iteration protocol.</p>
+<h4>Syntax</h4>
+<pre><code class="javascript">for (variable of iterable) {
+  statement
+}
+</code></pre>
+<p>Iterating over an Array</p>
+<pre><code class="javascript">let values = [10, 20, 30];
+for (let value of values) {
+  console.log(value);
+}
+// 10
+// 20
+</code></pre>
+<p>Iterating over a String</p>
+<pre><code class="javascript">let color = "red";
+for (let c of color) {
+  console.log(c);
+}
+// r
+// e
+// d
+</code></pre>
+<h4>Difference between <code>for...of</code> and <code>for...in</code></h4>
+<p>The <code>for...in</code> loop will iterate over all <a title="It simply means that the property will show up if you iterate over the object using <code>for..in</code> or <code>Object.keys()</code>." ng-click="showAlert($event)">enumerable properties</a> of an object.</p>
+<p>The <code>for...of</code> syntax is specific to collections, rather than all objects.</p>
+<p>The following example shows the difference between a <code>for...of</code> loop and a <code>for...in</code> loop.</p>
+<h4><code>for...in</code> Example</h4>
+<pre><code class="javascript">var values = ["one", "two"];
+for (var value in values) {
+    console.log("Index is: "+value);
+}
+// Index is: 0
+// Index is: 1
+for (var value in values) {
+    console.log("Value is: "+values[value]);
+}
+// Value is: one
+// Value is: two
+</code></pre>
+<h4><code>for...of</code> Example</h4>
+<pre><code class="javascript">var values = ["one", "two"];
+for (let value of values) {
+    console.log("Value is: "+value);
+}
+// Value is: one
+// Value is: two
+</code></pre>
+				
+								
 							</div>
 						</div>
 						<footer class="es6-footer mdl-mini-footer">
@@ -77,8 +112,10 @@
 		</div>
 	</div>
 	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-	<script defer src="assets/js/script.js"></script>
-	<script>
+	<script defer src="../assets/js/script.js"></script>
+	<script src="../assets/js/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

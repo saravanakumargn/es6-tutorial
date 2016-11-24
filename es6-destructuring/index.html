@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="ES6 Tutorial">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<title>ES6 Destructuring - ECMAScript 2015 (ES6) Tutorial</title>
+	<link rel="shortcut icon" href="images/favicon.png">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+	<link rel="stylesheet" href="../assets/css/style.css">
+	<link rel="stylesheet" href="../assets/css/hightlight.css">
+</head>
+
+<body>
+	<div class="es6-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header">
+				<div class="mdl-layout__header-row">
+					<span class="mdl-layout-title">ES6 Tutorial</span>
+					<div class="mdl-layout-spacer"></div>
+					<nav class="mdl-navigation mdl-layout--large-screen-only">
+						<a class="mdl-navigation__link" href="https://github.com/saravanakumargn/es6-tutorial">Github</a>
+					</nav>
+				</div>
+			</header>
+			<div class="mdl-layout__drawer">
+				<span class="mdl-layout-title">ES6 Tutorial</span>
+				<nav class="mdl-navigation" id="pageMenu">
+					<a class="mdl-navigation__link" href="">Link</a>
+				</nav>
+			</div>
+			<main class="mdl-layout__content">
+				<div class="page-content">
+					<div class="es6-ribbon"></div>
+					<main class="es6-main mdl-layout__content">
+						<div class="es6-container mdl-grid">
+							<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+							<div class="es6-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+								<div class="es6-crumbs mdl-color-text--grey-500">
+									<a href="https://saravanakumargn.github.io/es6-tutorial/">ES6 Tutorial</a> &gt; ES6 Destructuring</div>
+									<div class="badge-container">
+									<a href='https://play.google.com/store/apps/details?id=org.saravanakumar.es6&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+									<img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="240px" height="95px" />
+									</a>
+								</div>
+								
+<h2>Destructuring assignment</h2>
+<p>Destructuring is a convenient way of extracting values from data stored in (possibly nested) objects and Arrays.</p>
+<pre><code class="javascript">var a, b, rest;
+[a, b] = [1, 2];
+console.log(a); // 1
+console.log(b); // 2
+
+[a, b, ...rest] = [1, 2, 3, 4, 5];
+console.log(a); // 1
+console.log(b); // 2
+console.log(rest); // [3, 4, 5]
+</code></pre>
+
+<h4>Object destructuring</h4>
+<p>Destructuring objects:</p>
+<pre><code class="javascript">const obj = {total: 42, isValid: true};
+const {total, isValid} = obj;
+console.log(total); // 42
+console.log(isValid); // true
+</code></pre>
+<p>A variable can be extracted from an object and assigned to a variable with a different name than the object property.</p>
+<pre><code class="javascript">const obj = {total: 42, isValid: true};
+const {total: tot, isValid: valid} = obj;
+console.log(tot); // 42
+console.log(valid); // true
+</code></pre>
+<p>Nested object and array destructuring</p>
+<pre><code class="javascript">var metadata = {
+    title: "Scratchpad",
+    translations: [
+       {
+        last_edit: "2014-04-14T08:43:37",
+        url: "/de/docs/Tools/Scratchpad",
+        title: "JavaScript-Umgebung"
+       }
+    ]
+};
+var { title, translations: [{ last_edit }] } = metadata;
+console.log(title); // Scratchpad
+console.log(last_edit);  // 2014-04-14T08:43:37
+</code></pre>
+
+<h4>Array destructuring</h4>
+<p>Basic variable assignment</p>
+<pre><code class="javascript">var valueArray = ["one", "two", "three"];
+var [one, two, three] = valueArray;
+console.log(one); // one
+console.log(two); // two
+console.log(three); // three
+</code></pre>
+<p>A variable can be assigned a default, in the case that the value pulled from the array is undefined.</p>
+<pre><code class="javascript">var [one="one", two="two"] = ["1"];
+console.log(one); // 1
+console.log(two); // two
+</code></pre>
+<p>When the regular expression exec() method finds a match, it returns an array containing first the entire matched portion of the string and then the portions of the string that matched each parenthesized group in the regular expression.</p>
+<p>Destructuring assignment allows you to pull the parts out of this array easily, ignoring the full match if it is not needed.</p>
+<pre><code class="javascript">const [all, year, month, day] = /^(\d\d\d\d)-(\d\d)-(\d\d)$/.exec('1999-12-28');
+console.log(all); // 1999-12-28
+console.log(year); // 1999
+console.log(month); // 12
+console.log(day); // 28
+</code></pre>
+<h4>Usage</h4>
+<p>We can also destructure in a <code>for-of</code> loop:</p>
+<pre><code class="javascript">const user = [
+    {name: 'saravana', age: 31},
+    {name: 'kumar', age: 29},
+];
+for (const {name, age} of user) {
+    console.log(name, age);
+}
+// saravana 31
+// kumar 29
+</code></pre>
+				
+								
+							</div>
+						</div>
+						<footer class="es6-footer mdl-mini-footer">
+							<div class="mdl-mini-footer--left-section">
+								<p>We would love to hear any suggestions, questions or comments, please write into saravanakumargn@gmail.com. Please visit us: <a href="http://saravanakumar.org/">www.saravanakumar.org</a></p>
+							</div>
+						</footer>
+					</main>
+				</div>
+			</main>
+		</div>
+	</div>
+	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+	<script defer src="../assets/js/script.js"></script>
+	<script src="../assets/js/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-87935251-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

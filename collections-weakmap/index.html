@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="ES6 Tutorial">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<title>Collections - WeakMap - ECMAScript 2015 (ES6) Tutorial</title>
+	<link rel="shortcut icon" href="images/favicon.png">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+	<link rel="stylesheet" href="../assets/css/style.css">
+	<link rel="stylesheet" href="../assets/css/hightlight.css">
+</head>
+
+<body>
+	<div class="es6-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header">
+				<div class="mdl-layout__header-row">
+					<span class="mdl-layout-title">ES6 Tutorial</span>
+					<div class="mdl-layout-spacer"></div>
+					<nav class="mdl-navigation mdl-layout--large-screen-only">
+						<a class="mdl-navigation__link" href="https://github.com/saravanakumargn/es6-tutorial">Github</a>
+					</nav>
+				</div>
+			</header>
+			<div class="mdl-layout__drawer">
+				<span class="mdl-layout-title">ES6 Tutorial</span>
+				<nav class="mdl-navigation" id="pageMenu">
+					<a class="mdl-navigation__link" href="">Link</a>
+				</nav>
+			</div>
+			<main class="mdl-layout__content">
+				<div class="page-content">
+					<div class="es6-ribbon"></div>
+					<main class="es6-main mdl-layout__content">
+						<div class="es6-container mdl-grid">
+							<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+							<div class="es6-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+								<div class="es6-crumbs mdl-color-text--grey-500">
+									<a href="https://saravanakumargn.github.io/es6-tutorial/">ES6 Tutorial</a> &gt; Collections - WeakMap</div>
+									<div class="badge-container">
+									<a href='https://play.google.com/store/apps/details?id=org.saravanakumar.es6&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+									<img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="240px" height="95px" />
+									</a>
+								</div>
+								
+<h2>Collections - WeakMap</h2>
+<p>The following four data structures are new in ECMAScript 6: <code>Map</code>, <code>WeakMap</code>, <code>Set</code> and <code>WeakSet</code>.</p>
+<p>The <code>WeakMap</code> object is a collection of key/value pairs in which the keys are <a title="References to objects in the collection are held weakly. If there is no other reference to an object stored in the WeakSet, they can be garbage collected. This means the garbage collector can remove any object in the set when it's no longer used without the programmer needing to explicitly remove it from the set." ng-click="showAlert($event)">weakly referenced</a>.</p>
+<p>Keys of WeakMaps are of the type Object only. <a title="A primitive (primitive value, primitive data type) is data that is not an object and has no methods. In JavaScript, there are 6 primitive data types: string, number, boolean, null, undefined, symbol (new in ECMAScript 2015)." ng-click="showAlert($event)">Primitive</a> data types as keys are not allowed (e.g. a <code>Symbol</code> can't be a <code>WeakMap</code> key).</p>
+<p>WeakMaps work mostly like Maps, with the following differences:</p>
+<ul>
+  <li>WeakMap keys are objects (values can be arbitrary values)</li>
+  <li>WeakMap keys are weakly held</li>
+  <li>You can’t get an overview of the contents of a WeakMap</li>
+  <li>You can’t clear a WeakMap</li>
+</ul>
+<pre><code class="javascript">var weakmap = new WeakMap()
+weakmap.set({}, 123);
+
+var weakmap1 = new WeakMap()
+weakmap1.set(1, "One"); // TypeError: Invalid value used as weak map key
+</code></pre>
+<h4>Why <code>WeakMap</code>?</h4>
+<p>The experienced JavaScript programmer will notice that this API could be implemented in JavaScript with two arrays (one for keys, one for values) shared by the four API methods. </p>
+<p>Such an implementation would have two main inconveniences.</p>
+<ul>
+    <li>The first one is an O(n) search (n being the number of keys in the map).</li>
+    <li>The second one is a memory leak issue.</li>
+</ul>
+<p>With manually written maps, the array of keys would keep references to key objects, preventing them from being garbage collected. In native WeakMaps, references to key objects are held "weakly", which means that they do not prevent garbage collection in case there would be no other reference to the object.</p>
+<p>Because of references being weak, WeakMap keys are not enumerable (i.e. there is no method giving you a list of the keys). If they were, the list would depend on the state of garbage collection, introducing non-determinism.</p>
+				
+								
+							</div>
+						</div>
+						<footer class="es6-footer mdl-mini-footer">
+							<div class="mdl-mini-footer--left-section">
+								<p>We would love to hear any suggestions, questions or comments, please write into saravanakumargn@gmail.com. Please visit us: <a href="http://saravanakumar.org/">www.saravanakumar.org</a></p>
+							</div>
+						</footer>
+					</main>
+				</div>
+			</main>
+		</div>
+	</div>
+	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+	<script defer src="../assets/js/script.js"></script>
+	<script src="../assets/js/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-87935251-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

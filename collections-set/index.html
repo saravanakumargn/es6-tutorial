@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="ES6 Tutorial">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<title>Collections - Set - ECMAScript 2015 (ES6) Tutorial</title>
+	<link rel="shortcut icon" href="images/favicon.png">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+	<link rel="stylesheet" href="../assets/css/style.css">
+	<link rel="stylesheet" href="../assets/css/hightlight.css">
+</head>
+
+<body>
+	<div class="es6-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header">
+				<div class="mdl-layout__header-row">
+					<span class="mdl-layout-title">ES6 Tutorial</span>
+					<div class="mdl-layout-spacer"></div>
+					<nav class="mdl-navigation mdl-layout--large-screen-only">
+						<a class="mdl-navigation__link" href="https://github.com/saravanakumargn/es6-tutorial">Github</a>
+					</nav>
+				</div>
+			</header>
+			<div class="mdl-layout__drawer">
+				<span class="mdl-layout-title">ES6 Tutorial</span>
+				<nav class="mdl-navigation" id="pageMenu">
+					<a class="mdl-navigation__link" href="">Link</a>
+				</nav>
+			</div>
+			<main class="mdl-layout__content">
+				<div class="page-content">
+					<div class="es6-ribbon"></div>
+					<main class="es6-main mdl-layout__content">
+						<div class="es6-container mdl-grid">
+							<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+							<div class="es6-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+								<div class="es6-crumbs mdl-color-text--grey-500">
+									<a href="https://saravanakumargn.github.io/es6-tutorial/">ES6 Tutorial</a> &gt; Collections - Set</div>
+									<div class="badge-container">
+									<a href='https://play.google.com/store/apps/details?id=org.saravanakumar.es6&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+									<img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="240px" height="95px" />
+									</a>
+								</div>
+								
+<h2>Collections - Set</h2>
+<p>The following four data structures are new in ECMAScript 6: <code>Map</code>, <code>WeakMap</code>, <code>Set</code> and <code>WeakSet</code>.</p>
+<p>A Set is a collection of unique elements of any type.</p>
+<p>Basic usage</p>
+<pre><code class="javascript">var valueSet = new Set([1,2,2,3]);
+console.log(valueSet); // [1,2,3]
+</code></pre>
+<p>Set add and delete:</p>
+<pre><code class="javascript">var valueSet = new Set();
+valueSet.add(1);
+valueSet.add("green");
+console.log(valueSet); // 1, "green"
+valueSet.delete("green");
+console.log(valueSet); // 1
+</code></pre>
+<p>Set size and clear:</p>
+<pre><code class="javascript">var valueSet = new Set([3, 7]);
+console.log(valueSet.size); // 2
+valueSet.clear(); // Removes all elements from the Set object.
+console.log(valueSet.size); // 0
+</code></pre>
+<p>Set has:</p>
+<p>It returns boolean value whether an element is present with the given value in the Set object or not.</p>
+<pre><code class="javascript">var valueSet = new Set([3, 7]);
+console.log(valueSet.has(3)); // true
+console.log(valueSet.has(31)); // false
+</code></pre>
+<p>Iterating Sets</p>
+<pre><code class="javascript">var valueSet = new Set([1,2,2,3]);
+for (let item of valueSet) {
+    console.log(item);
+}
+// 1
+// 2
+// 3
+</code></pre>
+
+<h4>Converting between Array and Set</h4>
+<p>You can create an Array from a Set using Array.from or the spread operator.</p>
+<p>Set objects store unique values, so any duplicate elements from an Array are deleted when converting.</p>
+<pre><code class="javascript">var valueSet = new Set([1,2,3,3,true]);
+console.log(valueSet); // Set {1, 2, 3, true}
+var array = Array.from(valueSet);
+var array1 = [...valueSet];
+console.log(array); // [1, 2, 3, true]
+console.log(array1); // [1, 2, 3, true]
+</code></pre>
+<h4>Array Vs Set</h4>
+<ul>
+    <li>Checking whether an element exists in an collection using indexOf for arrays is slow.</li>
+    <li>Set objects let you delete elements by their value. With an array you would have to splice based on a element's index.</li>
+    <li>The value NaN cannot be found with indexOf in array.</li>
+    <li>Set objects store unique values, you don't have to keep track of duplicates by yourself.</li>
+</ul>
+				
+								
+							</div>
+						</div>
+						<footer class="es6-footer mdl-mini-footer">
+							<div class="mdl-mini-footer--left-section">
+								<p>We would love to hear any suggestions, questions or comments, please write into saravanakumargn@gmail.com. Please visit us: <a href="http://saravanakumar.org/">www.saravanakumar.org</a></p>
+							</div>
+						</footer>
+					</main>
+				</div>
+			</main>
+		</div>
+	</div>
+	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+	<script defer src="../assets/js/script.js"></script>
+	<script src="../assets/js/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-87935251-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>
