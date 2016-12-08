@@ -1,0 +1,116 @@
+---
+layout: page
+title: Arrow function
+permalink: /arrow-function/
+---
+
+<p>There are two benefits to arrow functions.</p>
+<ol>
+  <li>Shorter syntax <code>=></code> compared to function expressions.</li>
+  <li><code>this</code> is picked from the lexical scope (also called static scope).</li>
+</ol>
+
+<p>Arrow functions are always anonymous. The examples are below:</p>
+<p>Function without any parameters</p>
+{% highlight javascript %}
+var intro = () => "Welcome";
+{% endhighlight %}
+
+<p>The above code is equivalent of the below:</p>
+{% highlight javascript %}
+ var intro = function intro() {
+  return "Welcome";
+};
+{% endhighlight %}
+
+<p>Using Arrow function with <code>map</code></p>
+{% highlight javascript %}
+const arr = [1, 2, 3];
+const squares = arr.map(x => x * x);
+{% endhighlight %}
+
+<p>The above code is equivalent of the below:</p>
+{% highlight javascript %}
+var arr = [1, 2, 3];
+var squares = arr.map(function (x) {
+  return x * x;
+});
+{% endhighlight %}
+
+<p>Function with 1 parameter</p>
+{% highlight javascript %}
+var multiplyBy2 = value1 => value1 * 2;
+console.log(multiplyBy2(4));  // prints 8
+{% endhighlight %}
+
+<p>The above code is equivalent of the below:</p>
+{% highlight javascript %}
+ var multiplyBy2 = function multiplyBy2(value1) {
+  return value1 * 2;
+};
+console.log(multiplyBy2(4)); // prints 8
+{% endhighlight %}
+
+<p>Function with more than 2 parameters</p>
+{% highlight javascript %}
+var add = (value1, value2) => value1 + value2;
+console.log(add(10, 20));   // prints 30
+{% endhighlight %}
+
+<p>The above code is equivalent of the below:</p>
+{% highlight javascript %}
+ var add = function add(value1, value2) {
+  return value1 + value2;
+};
+console.log(add(10, 20)); // prints 30
+{% endhighlight %}
+
+<h4>this reference</h4>
+<p>The source of this is an important distinguishing aspect of arrow functions:</p>
+<ul>
+  <li>Traditional functions have a <code>dynamic this</code>; its value is determined by how they are called.</li>
+  <li>Arrow functions have a <code>lexical this</code>; its value is determined by the surrounding scope.</li>
+</ul>
+<p>The following variables are all lexical inside arrow functions:</p>
+<ul>
+  <li><code>arguments</code></li>
+  <li><code>super</code></li>
+  <li><code>this</code></li>
+  <li><code>new.target</code></li>
+</ul>
+
+<p>An arrow function does not create its own this context, so this has the original meaning from the enclosing context.</p>
+<p>Working with <code>this</code> until traditional way</p>
+{% highlight javascript %}
+function Person() {
+    var _this = this;
+    this.count = 0;
+    setInterval(function () {
+        console.log(_this.count++); // |this| properly refers to the person object
+    }, 1000);
+}
+{% endhighlight %}
+
+<p>The above code is equivalent of the below:</p>
+{% highlight javascript %}
+function Person(){
+  this.count = 0;
+
+  setInterval(() => {
+    console.log(this.count++); // |this| properly refers to the person object
+  }, 1000);
+}
+{% endhighlight %}
+
+<h4>Returning object literals</h4>
+<p>The object literal returned by this arrow function is like below:</p>
+{% highlight javascript %}
+const f = x => ({ bar: 123 })
+{% endhighlight %}
+
+<p>The above code is equivalent of the below:</p>
+{% highlight javascript %}
+var f = function f(x) {
+  return { bar: 123 };
+};
+{% endhighlight %}

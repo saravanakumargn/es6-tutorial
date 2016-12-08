@@ -1,0 +1,68 @@
+---
+layout: page
+title: Template Strings
+permalink: /template-strings/
+---
+
+
+<p>ES6 has two new kinds of literals: <b>template literals</b> and <b>tagged template literals</b>.</p>
+<ul>
+    <li><b>Template literals</b> are string literals with support for interpolation and multiple lines.</li>
+    <li><b>Tagged template literals</b> (short: tagged templates): are function calls whose parameters are provided via template literals.</li>
+</ul>
+
+<h4>Template literals</h4>
+<p>This is a new kind of string literal allows to use multiple line strings and expression</p>
+<p>Template literals are enclosed by the back-tick <code>`...`</code> character instead of double or single quotes.</p>
+<p>Expressions can be indicated by the Dollar sign and curly braces <code>${...}</code>. </p>
+{% highlight javascript %}
+const firstname = 'gns';
+console.log(`Hello ${firstname},
+How are you?`);
+// output
+Hello gns,
+How are you? 
+{% endhighlight %}
+
+<p>The above code is equivalent to the below ES5 standard code</p>
+{% highlight javascript %}
+var firstname = 'gns';
+console.log("Hello " + firstname + ",\nHow are you?");
+// output
+Hello gns,
+How are you?
+{% endhighlight %}
+
+<p>Example 1</p>
+{% highlight javascript %}
+var a = 10, b = 20;
+console.log(`Addition value for ${a} and ${b} is ${a+b}`); // Addition value for 10 and 20 is 30
+var user = {name: 'gns'};
+console.log(`Current User: ${user.name.toUpperCase()}.`); // Current User: GNS.
+{% endhighlight %}
+
+<h4>Tagged template literals</h4>
+<p>A more advanced form of template literals are tagged template literals. With them you are able to modify the output of template literals using a function. The first argument contains an array of string literals ("Hello " , " world", and "" in this example). The second, and each argument after the first one, are the values of the processed (or sometimes called cooked) substitution expressions ("15" and "50" here). In the end, your function returns your manipulated string. There is nothing special about the name tag in the following example. The function name may be anything you want.</p>
+{% highlight javascript %}
+var a = 5;
+var b = 10;
+function tagFun(strings, ...values) {
+  console.log(strings[0]); // "Hello "
+  console.log(strings[1]); // " world "
+  console.log(strings[2]); // ""
+  console.log(values[0]);  // 15
+  console.log(values[1]);  // 50
+  return "Bazinga!";
+}
+tagFun`Hello ${ a + b } world ${ a * b }`;
+// "Bazinga!"
+{% endhighlight %}
+
+<h4>Raw strings</h4>
+<p>The special <code>raw</code> property, available on the first function argument of tagged template literals, allows you to access the raw strings as they were entered.</p>
+{% highlight javascript %}
+function tagFun(strings, ...values) {
+  console.log(strings.raw[0]); // "string text line 1 \n string text line 2"
+}
+tagFun`string text line 1 \n string text line 2`;
+{% endhighlight %}

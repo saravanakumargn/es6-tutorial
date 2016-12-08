@@ -1,0 +1,71 @@
+---
+layout: page
+title: Collections - Set
+permalink: /collections-set/
+---
+
+
+<p>The following four data structures are new in ECMAScript 6: <code>Map</code>, <code>WeakMap</code>, <code>Set</code> and <code>WeakSet</code>.</p>
+<p>A Set is a collection of unique elements of any type.</p>
+<p>Basic usage</p>
+{% highlight javascript %}
+var valueSet = new Set([1,2,2,3]);
+console.log(valueSet); // [1,2,3]
+{% endhighlight %}
+
+<p>Set add and delete:</p>
+{% highlight javascript %}
+var valueSet = new Set();
+valueSet.add(1);
+valueSet.add("green");
+console.log(valueSet); // 1, "green"
+valueSet.delete("green");
+console.log(valueSet); // 1
+{% endhighlight %}
+
+<p>Set size and clear:</p>
+{% highlight javascript %}
+var valueSet = new Set([3, 7]);
+console.log(valueSet.size); // 2
+valueSet.clear(); // Removes all elements from the Set object.
+console.log(valueSet.size); // 0
+{% endhighlight %}
+
+<p>Set has:</p>
+<p>It returns boolean value whether an element is present with the given value in the Set object or not.</p>
+{% highlight javascript %}
+var valueSet = new Set([3, 7]);
+console.log(valueSet.has(3)); // true
+console.log(valueSet.has(31)); // false
+{% endhighlight %}
+
+<p>Iterating Sets</p>
+{% highlight javascript %}
+var valueSet = new Set([1,2,2,3]);
+for (let item of valueSet) {
+    console.log(item);
+}
+// 1
+// 2
+// 3
+{% endhighlight %}
+
+<h4>Converting between Array and Set</h4>
+<p>You can create an Array from a Set using Array.from or the spread operator.</p>
+<p>Set objects store unique values, so any duplicate elements from an Array are deleted when converting.</p>
+{% highlight javascript %}
+var valueSet = new Set([1,2,3,3,true]);
+console.log(valueSet); // Set {1, 2, 3, true}
+var array = Array.from(valueSet);
+var array1 = [...valueSet];
+console.log(array); // [1, 2, 3, true]
+console.log(array1); // [1, 2, 3, true]
+{% endhighlight %}
+
+<h4>Array Vs Set</h4>
+<ul>
+    <li>Checking whether an element exists in an collection using indexOf for arrays is slow.</li>
+    <li>Set objects let you delete elements by their value. With an array you would have to splice based on a element's index.</li>
+    <li>The value NaN cannot be found with indexOf in array.</li>
+    <li>Set objects store unique values, you don't have to keep track of duplicates by yourself.</li>
+</ul>

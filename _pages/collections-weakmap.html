@@ -1,0 +1,34 @@
+---
+layout: page
+title: Collections - WeakMap
+permalink: /collections-weakmap/
+---
+
+
+<p>The following four data structures are new in ECMAScript 6: <code>Map</code>, <code>WeakMap</code>, <code>Set</code> and <code>WeakSet</code>.</p>
+<p>The <code>WeakMap</code> object is a collection of key/value pairs in which the keys are <a title="References to objects in the collection are held weakly. If there is no other reference to an object stored in the WeakSet, they can be garbage collected. This means the garbage collector can remove any object in the set when it's no longer used without the programmer needing to explicitly remove it from the set." ng-click="showAlert($event)">weakly referenced</a>.</p>
+<p>Keys of WeakMaps are of the type Object only. <a title="A primitive (primitive value, primitive data type) is data that is not an object and has no methods. In JavaScript, there are 6 primitive data types: string, number, boolean, null, undefined, symbol (new in ECMAScript 2015)." ng-click="showAlert($event)">Primitive</a> data types as keys are not allowed (e.g. a <code>Symbol</code> can't be a <code>WeakMap</code> key).</p>
+<p>WeakMaps work mostly like Maps, with the following differences:</p>
+<ul>
+  <li>WeakMap keys are objects (values can be arbitrary values)</li>
+  <li>WeakMap keys are weakly held</li>
+  <li>You can’t get an overview of the contents of a WeakMap</li>
+  <li>You can’t clear a WeakMap</li>
+</ul>
+{% highlight javascript %}
+var weakmap = new WeakMap()
+weakmap.set({}, 123);
+
+var weakmap1 = new WeakMap()
+weakmap1.set(1, "One"); // TypeError: Invalid value used as weak map key
+{% endhighlight %}
+
+<h4>Why <code>WeakMap</code>?</h4>
+<p>The experienced JavaScript programmer will notice that this API could be implemented in JavaScript with two arrays (one for keys, one for values) shared by the four API methods. </p>
+<p>Such an implementation would have two main inconveniences.</p>
+<ul>
+    <li>The first one is an O(n) search (n being the number of keys in the map).</li>
+    <li>The second one is a memory leak issue.</li>
+</ul>
+<p>With manually written maps, the array of keys would keep references to key objects, preventing them from being garbage collected. In native WeakMaps, references to key objects are held "weakly", which means that they do not prevent garbage collection in case there would be no other reference to the object.</p>
+<p>Because of references being weak, WeakMap keys are not enumerable (i.e. there is no method giving you a list of the keys). If they were, the list would depend on the state of garbage collection, introducing non-determinism.</p>			

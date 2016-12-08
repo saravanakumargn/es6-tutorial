@@ -1,0 +1,57 @@
+---
+layout: page
+title: Rest parameters
+permalink: /rest-parameter/
+---
+
+
+<p>Putting the rest operator <code>...</code> in front of the last formal parameter means that it will receive all remaining actual parameters in an Array.</p>
+<p>In the below example, marks would collect the second argument of the function (because the first one is mapped to a) and all the consecutive arguments.</p>
+{% highlight javascript %}
+function student(name, ...marks) {
+    console.log(name); // myname
+    console.log(marks); // [10, 20, 30, 40, 50]
+}
+student('myname', 10,20,30,40,50);
+{% endhighlight %}
+
+<h4>Difference between rest parameters and the arguments object</h4>
+<p>There are three main differences between rest parameters and the arguments object:</p>
+<ul>
+    <li>rest parameters are only the ones that haven't been given a separate name, while the arguments object contains all arguments passed to the function;</li>
+    <li>the arguments object is not a real array, while rest parameters are Array instances, meaning methods like sort, map, forEach or pop can be applied on it directly;</li>
+    <li>the arguments object has additional functionality specific to itself.</li>
+</ul>
+<p>Working with arguments old way</p>
+{% highlight javascript %}
+function student(name, marks) {
+    console.log(name); // myname
+    console.log(arguments); // ["myname", 7, 4, 8, 2, 9]
+    console.log(marks); // 7
+    console.log(arguments.sort()); // Uncaught TypeError: arguments.sort is not a function(…)
+}
+student('myname', 7,4,8,2,9);    
+{% endhighlight %}
+
+<p>The above code is equivalent to the below ES5 standard code</p>
+{% highlight javascript %}
+function student(name, ...marks) {
+    console.log(name); // myname
+    console.log(marks); // [7, 4, 8, 2, 9]
+    console.log(marks.sort()); // [2, 4, 7, 8, 9]
+}
+student('myname', 7,4,8,2,9); 
+{% endhighlight %}
+
+<h4>Other usage example</h4>
+{% highlight javascript %}
+function student(name, ...marks) {
+    console.log(name); // myname
+    console.log(marks); // [10, 20, 30]
+    var total = marks.reduce(function(a,b) {
+        return a+b;
+    })
+    console.log(total); // 150
+}
+student('myname', 10,20,30,40,50);
+{% endhighlight %}
